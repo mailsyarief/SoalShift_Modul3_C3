@@ -16,6 +16,11 @@ void* lohan()
 	{
 		sleep(10);
 		StatusLohan -= 15;
+		if(StatusLohan>100 || StautsKepiting>100 || StatusLohan<=0 || StautsKepiting <=0)
+	{
+		printf("Game Berakhir");
+		exit(EXIT_FAILURE);
+	}
 		
 	}
 }
@@ -27,6 +32,11 @@ void* kepiting()
 	{
 		sleep(20);
 		StautsKepiting -= 10;
+		if(StatusLohan>100 || StautsKepiting>100 || StatusLohan<=0 || StautsKepiting <=0)
+	{
+		printf("Game Berakhir");
+		exit(EXIT_FAILURE);
+	}
 	}
 
 }
@@ -40,10 +50,20 @@ void makan()
 	if(maam==1)
 	{
 		StatusLohan += 10;
+		if(StatusLohan>100 || StautsKepiting>100 || StatusLohan<=0 || StautsKepiting <=0)
+	{
+		printf("Game Berakhir");
+		exit(EXIT_FAILURE);
+	}
 	}
 	else if (maam==2)
 	{	
 		StautsKepiting += 10;
+		if(StatusLohan>100 || StautsKepiting>100 || StatusLohan<=0 || StautsKepiting <=0)
+	{
+		printf("Game Berakhir");
+		exit(EXIT_FAILURE);
+	}
 	}
 }
 
@@ -68,13 +88,15 @@ int main()
 		makan();
 
 	}
-	else if(opsi==2)
-	{}
+	else if(opsi==2){
+		printf("Status Lohan: %d\n", StatusLohan);
+		printf("Status Kepiting: %d\n", StatusKepiting)
+	}
 	
 	if(StatusLohan>100 || StautsKepiting>100 || StatusLohan<=0 || StautsKepiting <=0)
 	{
-		system("clear");
-		printf("HEWAN ANDA MATI");
+		printf("Game Berakhir");
+		exit(EXIT_FAILURE);
 	}
 
 	}
