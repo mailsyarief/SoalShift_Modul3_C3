@@ -1,10 +1,19 @@
-#include<stdio.h>
-#include<string.h>
-
-const char* stok[7]={"MP4A1", "PM2-V1" , "SPR-3", "SS2-V5", "SPG1-V3", "MINE"};
-int jumlah[7];
+#include <stdio.h>
+#include <string.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 
 int main(){
+	key_t key=1234;
+	int *jumlah;	
+	const char* stok[7]={"MP4A1", "PM2-V1" , "SPR-3", "SS2-V5", "SPG1-V3", "MINE"};
+	//int jumlah[7];
+	int shmid = shmget(key, sizeof(int)*3, IPC_CREAT | 0666);
+	jumlah=shmat(shmid,NULL,0);
 	int m;
 	for(int i=0;i<6;i++) jumlah[i]=99;
 	printf("Menu : \n1. Lihat Stock\t 2. Beli Senjata\n");
@@ -72,4 +81,6 @@ int main(){
 		}
 		printf("Menu : \n1. Lihat Stock\t 2. Beli Senjata\n");
 	}
+	shmdt(stok);
+	shmctl(shmid, IPC_RMID, NULL);
 }
