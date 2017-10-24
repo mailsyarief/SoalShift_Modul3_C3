@@ -81,6 +81,6 @@ int main(){
 		}
 		printf("Menu : \n1. Lihat Stock\t 2. Beli Senjata\n");
 	}
-	shmdt(stok);
+	shmdt(jumlah);
 	shmctl(shmid, IPC_RMID, NULL);
 }
