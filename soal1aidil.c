@@ -1,11 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <pthread.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
+#include<stdio.h>
+#include<string.h>
 
 const char* stok[7]={"MP4A1", "PM2-V1" , "SPR-3", "SS2-V5", "SPG1-V3", "MINE"};
 int jumlah[7];
@@ -23,7 +17,7 @@ void beli(){
 	printf("5. SPG1-V3\t6. MINE\n");
 	char h[100]; int beli;
 	scanf("%s %d", h, &beli);
-	printf("%s %d\n", h, beli);
+	//printf("%s %d\n", h, beli);
 	if(strcmp(h, "MP4A1")==0){
 		if((jumlah[0]-beli)<0){
 			printf("Anda hanya bisa membeli %d\n", jumlah[0]);
@@ -38,6 +32,37 @@ void beli(){
 		}
 		else{jumlah[1]=jumlah[1]-beli;}
 	}
+	if(strcmp(h, "SPR-3")==0){
+		if((jumlah[2]-beli)<0){
+			printf("Anda hanya bisa membeli %d\n", jumlah[2]);
+			jumlah[2]=0;
+		}
+		else{jumlah[2]=jumlah[2]-beli;}
+	}
+	
+	if(strcmp(h, "SS2-V5")==0){
+		if((jumlah[3]-beli)<0){
+			printf("Anda hanya bisa membeli %d\n", jumlah[3]);
+			jumlah[3]=0;
+		}
+		else{jumlah[3]=jumlah[3]-beli;}
+	}
+
+	if(strcmp(h, "SPG1-V3")==0){
+		if((jumlah[4]-beli)<0){
+			printf("Anda hanya bisa membeli %d\n", jumlah[4]);
+			jumlah[4]=0;
+		}
+		else{jumlah[4]=jumlah[4]-beli;}
+	}
+
+	if(strcmp(h, "MINE")==0){
+		if((jumlah[5]-beli)<0){
+			printf("Anda hanya bisa membeli %d\n", jumlah[5]);
+			jumlah[5]=0;
+		}
+		else{jumlah[5]=jumlah[5]-beli;}
+	}
 }
 
 int main(){
@@ -46,11 +71,11 @@ int main(){
 	printf("Menu : \n1. Lihat Stock\t 2. Beli Senjata\n");
 	while(scanf("%d", &m)&&m!=3){ 	
 		if(m==1){
-			printf("liat stok\n"); 
+			//printf("liat stok\n"); 
 			lihat();
 	  	}
 	  	if (m==2){
-	    		printf("beli hehe\n");
+	    		//printf("beli hehe\n");
 			beli();
 	  	}
 		printf("Menu : \n1. Lihat Stock\t 2. Beli Senjata\n");
