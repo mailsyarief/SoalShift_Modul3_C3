@@ -60,6 +60,6 @@ void main()
 		}
 		printf("Menu : \n1. Lihat Stock\t 2. Tambah Stock\n");
 	}
-	shmdt(value);
+	shmdt(jumlah);
 	shmctl(shmid, IPC_RMID, NULL);
 }
