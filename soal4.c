@@ -6,31 +6,14 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-void *faktorial(void *fak)
+int main(int argc, char** argv)
 {
-    int faktor = (int *) fak;
-    for(i=1:i<faktor;i++)
+    pthread_t t[argc];
+    int i, convert;
+
+    for(i=0;i<argc;i++)
     {
-        total *= i;
-    } 
-    printf("hasil %d = %d\n", faktor, total);
-
-}
-
-int total=1;
-int i;
-input[100];
-input1[100];
-int convert,len;
-
-
-int main()
-{
-    pthread_t thread;
-    while(scanf("%s",input)&&strcmp(input,"\n"))
-    {
-        strcpy(input1,input);
-        len=strlen(input1);
-        convert = atoi(input);
+        convert = atoi(argv[i]);
+        pthread_create(&(t[i]),NULL,&factorial,(void*)convert);
     }
 }
