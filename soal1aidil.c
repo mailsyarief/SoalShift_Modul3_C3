@@ -24,6 +24,20 @@ void beli(){
 	char h[100]; int beli;
 	scanf("%s %d", h, &beli);
 	printf("%s %d\n", h, beli);
+	if(strcmp(h, "MP4A1")==0){
+		if((jumlah[0]-beli)<0){
+			printf("Anda hanya bisa membeli %d\n", jumlah[0]);
+			jumlah[0]=0;
+		}
+		else{jumlah[0]=jumlah[0]-beli;}
+	}
+	if(strcmp(h, "PM2-V1")==0){
+		if((jumlah[1]-beli)<0){
+			printf("Anda hanya bisa membeli %d\n", jumlah[1]);
+			jumlah[1]=0;
+		}
+		else{jumlah[1]=jumlah[1]-beli;}
+	}
 }
 
 int main(){
