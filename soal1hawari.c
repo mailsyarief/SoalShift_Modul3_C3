@@ -7,23 +7,39 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-int w1,w2,w3,w4,w5,w6;
+char namasenjata[5][10]={"MP4A1","PM2-V1","SPR-3","SS2-V5","SPG1-V3","MINE"};
+int jumlahsejata[5];
 
 void LihatStock()
 {
-	printf("MP4A1 = \n");
-	printf("%d\n", w1);
-	printf("PM2-V1 = \n");
-	printf("%d\n", w1);
-	printf("SPR-3 = \n");
-	printf("%d\n", w1);
-	printf("SS2-V5 = \n");
-	printf("%d\n", w1);
-	printf("SPG-V3 = \n");
-	printf("%d\n", w1);
-	printf("MINE = \n");
-	printf("%d\n", w1);	
-}
+	int opsi2;
+	printf("1. MP4A1, 2. PM2-V1, 3. SPR-3, 4. SS2-V5, 5. SPG1-V3, 6. MINE\n");
+	scanf("%d", &opsi2);
+	if (opsi2==1)
+	{
+		printf("%s = %d\n", namasenjata[0], jumlahsejata[0]);
+	}
+	else if (opsi2==2)
+	{
+		printf("%s = %d\n", namasenjata[1], jumlahsejata[1]);
+	}
+	else if (opsi2==3)
+	{
+		printf("%s = %d\n", namasenjata[2], jumlahsejata[2]);
+	}
+	else if (opsi2==4)
+	{
+		printf("%s = %d\n", namasenjata[3], jumlahsejata[3]);
+	}
+	else if (opsi2==5)
+	{
+		printf("%s = %d\n", namasenjata[4], jumlahsejata[4]);
+	}
+	else if (opsi2==6)
+	{
+		printf("%s = %d\n", namasenjata[5], jumlahsejata[5]);
+	}
+
 
 void TambahStock()
 {
