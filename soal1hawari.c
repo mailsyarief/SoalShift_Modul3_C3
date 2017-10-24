@@ -9,42 +9,32 @@
 char namasenjata[6][10]={"MP4A1","PM2-V1","SPR-3","SS2-V5","SPG1-V3","MINE"};
 int jumlahsejata[6];
 
-
-
 void LihatStock()
 {
-	printf("1. MP4A1, 2. PM2-V1, 3. SPR-3, 4. SS2-V5, 5. SPG1-V3, 6. MINE, 7. STOP\n");
-	int opsi2;
-	printf("Masukan opsi :\n");
 
-	scanf("%d", &opsi2);
-	if (opsi2==1)
+	if(jumlahsejata[0]>0)
 	{
 		printf("%s = %d\n", namasenjata[0], jumlahsejata[0]);
 	}
-	else if (opsi2==2)
+	if(jumlahsejata[1]>0)
 	{
 		printf("%s = %d\n", namasenjata[1], jumlahsejata[1]);
 	}
-	else if (opsi2==3)
+	if(jumlahsejata[2]>0)
 	{
 		printf("%s = %d\n", namasenjata[2], jumlahsejata[2]);
 	}
-	else if (opsi2==4)
+	if(jumlahsejata[3]>0)
 	{
 		printf("%s = %d\n", namasenjata[3], jumlahsejata[3]);
 	}
-	else if (opsi2==5)
+	if(jumlahsejata[4]>0)
 	{
 		printf("%s = %d\n", namasenjata[4], jumlahsejata[4]);
 	}
-	else if (opsi2==6)
+	if(jumlahsejata[5]>0)
 	{
-		printf("MINE = %d\n",  jumlahsejata[5]);
-	}
-	else
-	{
-		printf("Bang Hawari salah input\n");
+		printf("%s = %d\n", namasenjata[5], jumlahsejata[5]);
 	}
 
 	printf("1 = Lihat Stock , 2 = Tambah Stock, 3.Quit\n");
@@ -110,20 +100,8 @@ void TambahStock()
 
 }
 
-
-
 void main()
 {
-
-
-	int shmid;
-int *jumlahsejata;
-key_t key = 1234;
-int count = 6;
-
-shmid = shmget(key, count*sizeof(int), IPC_EXCL);
-jumlahsejata = shmat(shmid, 0, SHM_RDONLY);
-
 
 	printf("1 = Lihat Stock , 2 = Tambah Stock, 3.Quit\n");
 	int opsi;
