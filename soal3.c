@@ -8,7 +8,6 @@
 
 int StatusLohan = 100;
 int StautsKepiting = 100;
-int opsi;
 
 
 void* lohan()
