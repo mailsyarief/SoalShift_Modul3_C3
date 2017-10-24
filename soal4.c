@@ -6,6 +6,20 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+void* factorial(void oper)
+{
+    int count = (int) oper;
+    int total = 1;
+    int i;
+    for(i=0;i<count;i++)
+    {
+        total *= i;
+    }
+    printf("Hasil %d = %d\n", count, total);
+}
+
+
+
 int main(int argc, char** argv)
 {
     pthread_t t[argc];
