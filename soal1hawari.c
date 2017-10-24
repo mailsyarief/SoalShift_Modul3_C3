@@ -7,7 +7,6 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-
 void main()
 {
 	key_t key = 1234;
