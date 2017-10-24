@@ -9,6 +9,10 @@ FILE *target;
 
 void *Search()
 {
+	target = fopen("", r);
+
+
+
 
 }
 
@@ -21,7 +25,7 @@ int main(int argc, char** argv[])
 	int i;
 	for(1=0;i<argc;i++)
 	{
-		pthread_create()
+		pthread_create(&(t[i], NULL, &Search, (void*)argv[i]));
 	}
 
 	return 0;
