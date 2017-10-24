@@ -44,7 +44,7 @@ void main()
 				jumlah[3] +=  nambah;
 		
 			}
-			else if(strcmp(ns,"SPG-V3")==0)
+			else if(strcmp(ns,"SPG1-V3")==0)
 			{
 				jumlah[4] += nambah;
 		
