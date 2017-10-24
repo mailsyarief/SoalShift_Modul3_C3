@@ -12,7 +12,7 @@ int main(){
 	int *jumlah;	
 	const char* stok[7]={"MP4A1", "PM2-V1" , "SPR-3", "SS2-V5", "SPG1-V3", "MINE"};
 	//int jumlah[7];
-	int shmid = shmget(key, sizeof(int)*3, IPC_CREAT | 0666);
+	int shmid = shmget(key, sizeof(int)*6, IPC_CREAT | 0666);
 	jumlah=shmat(shmid,NULL,0);
 	int m;
 	//for(int i=0;i<6;i++) jumlah[i]=99;
