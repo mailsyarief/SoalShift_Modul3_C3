@@ -6,9 +6,9 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-void* factorial(void oper)
+void* factorial(void* oper)
 {
-    int count = (int) oper;
+    int count = (int*) oper;
     int total = 1;
     int i;
     for(i=0;i<count;i++)
@@ -17,7 +17,6 @@ void* factorial(void oper)
     }
     printf("Hasil %d = %d\n", count, total);
 }
-
 
 
 int main(int argc, char** argv)
@@ -30,4 +29,8 @@ int main(int argc, char** argv)
         convert = atoi(argv[i]);
         pthread_create(&(t[i]),NULL,&factorial,(void*)convert);
     }
+  for(i=0;i<argc; i++)
+  {
+    pthread_join(t[i], NULL);
+  }
 }
