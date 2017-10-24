@@ -48,39 +48,37 @@ void makan()
 	}
 }
 
+
 int main()
 {
-	pthread_t lohan_t;
-	pthread_t kepiting_t;
+	pthread_t lohan_t, kepiting_t;
+	pthread_create(&lohan_t,NULL,StatusLohan,NULL);
+	pthread_create(&kepiting_t,NULL,StautsKepiting,NULL);	
 
-	
-	printf("1. menu 2. status lohan, 3. Status kepiting\n");
-	scanf("%d", &opsi);
+	int opsi;
+
 	while(1)
 	{
+	printf("Status lohan = %d\n", StatusLohan);
+	printf("Status kepiting = %d\n", StautsKepiting);			
+	printf("1. berimakan 2. status\n");
+	scanf("%d", &opsi);
+
 	if(opsi==1)
 	{
 		makan();
 
 	}
 	else if(opsi==2)
+	{}
+	
+	if(StatusLohan>100 || StautsKepiting>100 || StatusLohan<=0 || StautsKepiting <=0)
 	{
-		printf("Status lohan = %d\n", StatusLohan);
-		continue;
-			
-	}
-	else if(opsi ==3)
-	{
-		printf("Status kepiting = %d\n", StautsKepiting);		
-		continue;
-	}
-	else
-	{
-		break;
-	}
+		system("clear");
+		printf("HEWAN ANDA MATI");
 	}
 
-	pthread_create(&(lohan_t),NULL,&StatusLohan,NULL);
-	pthread_create(&(kepiting_t),NULL,&StautsKepiting,NULL);
+	}
+
 	
 }
