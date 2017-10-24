@@ -29,7 +29,8 @@ int main()
     pthread_t thread;
     while(scanf("%s",input)&&strcmp(input,"\n"))
     {
+        strcpy(input1,input);
+        len=strlen(input1);
         convert = atoi(input);
-        printf("%d", convert);
     }
 }
