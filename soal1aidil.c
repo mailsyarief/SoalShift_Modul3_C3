@@ -15,7 +15,7 @@ int main(){
 	int shmid = shmget(key, sizeof(int)*3, IPC_CREAT | 0666);
 	jumlah=shmat(shmid,NULL,0);
 	int m;
-	for(int i=0;i<6;i++) jumlah[i]=99;
+	//for(int i=0;i<6;i++) jumlah[i]=99;
 	printf("Menu : \n1. Lihat Stock\t 2. Beli Senjata\n");
 	while(scanf("%d", &m)&&m!=3){ 	
 		if(m==1){
