@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+int StatusLohan = 100;
+int StautsKepiting = 100;
+int opsi;
+
+
 void lohan()
 {
 	int StatusLohan = 100;
