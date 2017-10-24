@@ -17,7 +17,13 @@ void lihat(){
 }
 
 void beli(){
-	
+	printf("Barang yang ingin dibeli: \n");
+	printf("1. MP4A1\t2. PM2-V1\n");
+	printf("3. SPR-3\t4. SS2-V5\n");
+	printf("5. SPG1-V3\t6. MINE\n");
+	char h[100]; int beli;
+	scanf("%s %d", h, &beli);
+	printf("%s %d\n", h, beli);
 }
 
 int main(){
