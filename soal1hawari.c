@@ -6,76 +6,141 @@
 #include <stdlib.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-const char* stok[7]={"MP4A1","PM2-V1","SPR-3","SS2-V5","SPG1-V3","MINE"};
-int jumlah[7];
+char namasenjata[6][10]={"MP4A1","PM2-V1","SPR-3","SS2-V5","SPG1-V3","MINE"};
+int jumlahsejata[6];
 
 void LihatStock()
 {
-	for(int i=0;i<6;i++){
-		printf("%s %d\n", stok[i], jumlah[i]);
+
+	if(jumlahsejata[0]>0)
+	{
+		printf("%s = %d\n", namasenjata[0], jumlahsejata[0]);
 	}
+	if(jumlahsejata[1]>0)
+	{
+		printf("%s = %d\n", namasenjata[1], jumlahsejata[1]);
+	}
+	if(jumlahsejata[2]>0)
+	{
+		printf("%s = %d\n", namasenjata[2], jumlahsejata[2]);
+	}
+	if(jumlahsejata[3]>0)
+	{
+		printf("%s = %d\n", namasenjata[3], jumlahsejata[3]);
+	}
+	if(jumlahsejata[4]>0)
+	{
+		printf("%s = %d\n", namasenjata[4], jumlahsejata[4]);
+	}
+	if(jumlahsejata[5]>0)
+	{
+		printf("%s = %d\n", namasenjata[5], jumlahsejata[5]);
+	}
+
+	printf("1 = Lihat Stock , 2 = Tambah Stock, 3.Quit\n");
+
 }
 
 int nambah = 0;
 void TambahStock()
 {
-	char ns[100]; int nambah;
-	scanf("%s %d", ns, nambah);
+	printf("Masukan Nama senjata\n");
+	char ns[100];
+	scanf("%s", ns);
 	if(strcmp(ns,"MP4A1")==0)
 	{
-		jumlah[0] += nambah;
+		printf("Masukan jumlah stok tambahan\n");
+		scanf("%d", &nambah);
+		jumlahsejata[0] += nambah;
+
 	}
 	else if(strcmp(ns,"PM2-V1")==0)
 	{
-		jumlah[1] +=  nambah;
+		printf("Masukan jumlah stok tambahan\n");
+		scanf("%d", &nambah);
+		jumlahsejata[1] +=  nambah;
 		
 	}
 	else if(strcmp(ns,"SPR-3")==0)
 	{
-		jumlah[2] +=  nambah;
+		printf("Masukan jumlah stok tambahan\n");
+		scanf("%d", &nambah);
+		jumlahsejata[2] +=  nambah;
 
 	}
 	else if(strcmp(ns,"SS2-V5")==0)
 	{
-		jumlah[3] +=  nambah;
+		printf("Masukan jumlah stok tambahan\n");
+		scanf("%d", &nambah);
+		jumlahsejata[3] +=  nambah;
 		
 	}
 	else if(strcmp(ns,"SPG-V3")==0)
 	{
-		jumlah[4] += nambah;
+		printf("Masukan jumlah stok tambahan\n");
+		scanf("%d", &nambah);
+		jumlahsejata[4] += nambah;
 		
 	}
 	else if(strcmp(ns,"MINE")==0)
 	{
-		jumlah[5] += nambah;
+		printf("Masukan jumlah stok tambahan\n");
+		scanf("%d", &nambah);
+		jumlahsejata[5] += nambah;
+		
+		
 	}
 	else
 	{
-		printf("Stok tidak tersedia.\n");
+		printf("Bang Hawari salah input\n");
 	}
+
+
+	printf("1 = Lihat Stock , 2 = Tambah Stock, 3.Quit\n");
 
 }
 
+
+
+
+
+
 void main()
 {
-	key_t key = 1234;
-	int *jumlah[7];
 
-	int shmid = shmget(key, sizeof(int), IPC_CREAT | 0666);
-	jumlah[7]=shmat(shmid,NULL,0);
-	int m;
-	for(int i=0;i<6;i++) *jumlah[i]=99;
-	printf("Menu : \n1. Lihat Stock\t 2. Tambah Stock\n");
-	while(scanf("%d", &m)&&m!=3){ 	
-		if(m==1){
-			//printf("liat stok\n"); 
-			LihatStock();
-	  	}
-	  	if (m==2){
-	    		//printf("beli hehe\n");
-			TambahStock();	  	
-		}
-		printf("Menu : \n1. Lihat Stock\t 2. Tambah Stock\n");
+int shmid;
+int *jumlahsejata;
+key_t key = 1234;
+int count = 6;
+
+shmid = shmget(key, count*sizeof(int), IPC_EXCL);
+jumlahsejata = shmat(shmid, 0, SHM_RDONLY);
+
+
+
+
+	printf("1 = Lihat Stock , 2 = Tambah Stock, 3.Quit\n");
+	int opsi;
+
+while(1)
+{
+	nambah = 0;
+	scanf("%d", &opsi);
+	if(opsi == 1)
+	{
+		LihatStock();
+	}
+	else if(opsi == 2)
+	{
+		TambahStock();
+	}
+	else if(opsi == 3)
+	{
+		break;
+	}
+	else
+	{
+		printf("Bang hawari salah input\n");
 	}
 }
 
@@ -98,4 +163,4 @@ void main()
         printf("Program 1: %d\n", *value);
         shmdt(value);
         shmctl(shmid, IPC_RMID, NULL);*/
-
+}
