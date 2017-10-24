@@ -7,10 +7,22 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
+int w1,w2,w3,w4,w5,w6;
 
 void LihatStock()
 {
-	int 
+	printf("MP4A1 = \n");
+	printf("%d\n", w1);
+	printf("PM2-V1 = \n");
+	printf("%d\n", w1);
+	printf("SPR-3 = \n");
+	printf("%d\n", w1);
+	printf("SS2-V5 = \n");
+	printf("%d\n", w1);
+	printf("SPG-V3 = \n");
+	printf("%d\n", w1);
+	printf("MINE = \n");
+	printf("%d\n", w1);	
 }
 
 void TambahStock()
