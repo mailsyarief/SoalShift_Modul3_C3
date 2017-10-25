@@ -42,15 +42,19 @@ void makan(){
 	printf("1. Lohan\t2.Kepiting\n");
 	int maam; scanf("%d", &maam);
 	if(maam==1){
-		printf("Lohan diberi makan\n");
+		hewan[0]+=10;
+		printf("Lohan: %d\tKepiting: %d\n", hewan[0], hewan[1]);
 	}
 	if(maam==2){
-		printf("Kepiting diberi makan\n");
+		hewan[1]+=10;
+		printf("Lohan: %d\tKepiting: %d\n", hewan[0], hewan[1]);	
 	}
 }
 
 int main()
 {
+	hewan[0]=100;
+	hewan[1]=100;
 	pthread_t lohan_t, kepiting_t;
 	pthread_create(&lohan_t,NULL,&inilohan,NULL);
 	pthread_create(&kepiting_t,NULL,&inikepiting,NULL);	
@@ -59,22 +63,22 @@ int main()
 
 	while(1)
 	{
-		printf("Status lohan = %d\n", Lohan);
-		printf("Status kepiting = %d\n", Kepiting);			
-		printf("1. berimakan 2. status\n");
-		scanf("%d", &opsi);
-
-		if(opsi==1){
-			makan();
+		if(hewan[1] <= 0 || hewan[1] > 100 || hewan[0] <= 0 || hewan[0] > 100){
+			printf("Status lohan = %d\n", hewan[0]);
+			printf("Status kepiting = %d\n", hewan[1]);
+			exit(EXIT_FAILURE);
 		}
-		else if(opsi==2){
-			printf("Status Lohan: %d\n", Lohan);
-			printf("Status Kepiting: %d\n", Kepiting);
-		}	
-		if(Lohan > 100 || Lohan <= 100 || Kepiting > 100 || Kepiting <= 100){
-			printf("Game berakhir\n");			
-			break;
-		}
+		else{			
+			printf("1. Beri Makan 2. Status\n");
+			scanf("%d", &opsi);
 
+			if(opsi==1){
+				makan();
+			}
+			else if(opsi==2){
+				printf("Status Lohan: %d\n", hewan[0]);
+				printf("Status Kepiting: %d\n", hewan[1]);
+			}	
+		}
 	}
 }
