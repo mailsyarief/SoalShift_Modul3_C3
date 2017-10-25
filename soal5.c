@@ -13,14 +13,13 @@ void *Search(void *arg)
 	char kata[100];
 	strcpy(kata,arg);
 	int count;
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t read;
-	while(getline(&line, &len, f)!= -1){
-		if(strstr(line, kata)!=NULL){
+	char novel[1000];
+	while(fscanf(f, "%s", &novel)!=EOF){
+		if(strstr(novel, kata)!=NULL){
 		count++;
 		}
 	}
+	fclose(f);
 	printf("%s: %d\n",kata, count);
 }
 
@@ -31,11 +30,11 @@ int main(int argc, char** argv[])
 
 	pthread_t t[argc];
 	int i;
-	for(i=0;i<argc;i++)
+	for(i=1;i<argc;i++)
 	{
 		pthread_create(&(t[i]), NULL, &Search, (void*)argv[i]);
 	}
-	for(i=0;i<argc;i++){
+	for(i=1;i<argc;i++){
 		pthread_join(t[i], NULL);	
 	}
 
