@@ -13,7 +13,10 @@ void *Search(void *arg)
 	char kata[100];
 	strcpy(kata,arg);
 	int count;
-	while(getline(&line, &len, fileIn)!= -1){
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+	while(getline(&line, &len, f)!= -1){
 		if(strstr(line, kata)!=NULL){
 		count++;
 		}
@@ -23,17 +26,17 @@ void *Search(void *arg)
 
 
 
-int main(int argc, char* argv[])
+int main(int argc, char** argv[])
 {
 
 	pthread_t t[argc];
 	int i;
 	for(i=0;i<argc;i++)
 	{
-		pthread_create(&(t[i], NULL, &Search, (void*)argv[i]));
+		pthread_create(&(t[i]), NULL, &Search, (void*)argv[i]);
 	}
 	for(i=0;i<argc;i++){
-		pthread_join(tid[i], NULL);	
+		pthread_join(t[i], NULL);	
 	}
 
 	return 0;
