@@ -89,6 +89,13 @@ void *playerB(void *arg){
 					bagian = 1;
 				}
 			}
+			if(skorA == 10 || skorB == 10 || sisaA == 0 || sisaB == 0){
+			printf("\nGame telah selesai!\n");
+			printf("Skor Akhir: \n");
+			printf("%s: %d\n", nama1, skorA);
+			printf("%s: %d\n", nama2, skorB);
+			exit(EXIT_FAILURE);
+		}
 		}
 	}
 }
