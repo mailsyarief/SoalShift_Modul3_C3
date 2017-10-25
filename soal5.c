@@ -14,7 +14,7 @@ void *Search(void *arg)
 	strcpy(kata,arg);
 	int count;
 	char novel[1000];
-	while(fscanf(f, "%s", &novel)!=EOF){
+	while(fscanf(f, "%s", novel)!=EOF){
 		if(strstr(novel, kata)!=NULL){
 		count++;
 		}
