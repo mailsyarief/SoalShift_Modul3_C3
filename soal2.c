@@ -36,7 +36,7 @@ void *playerA(void *arg){
 				if(boardA[lubang]==1) skorB++;
 				else if(boardA[lubang]==0) skorA++;		
 			}
-			turn=1;
+			turn=2;
 			bagian=0;
 			
 			printf("Skor Pemain: \n");
@@ -74,7 +74,7 @@ void *playerB(void *arg){
 				if(boardB[lubang]==1) skorA++;
 				else if(boardB[lubang]==0) skorB++;		
 			}
-			turn=2;
+			turn=1;
 			bagian=0;
 			
 			printf("Skor Pemain: \n");
