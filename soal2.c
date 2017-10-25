@@ -28,20 +28,21 @@ void *playerA(void *arg){
 			turn=2;		
 		}
 		if(bagian==1){
-			printf("%s, ingin tebak ranjau milik %s\n", nama1, nama2);
-			printf("Masukan 4 lubang mana yang terdapat ranjau! ");
+			printf("%s, ingin tebak ranjau milik %s\n", nama2, nama1);
+			printf("Masukan 4 lubang mana yang terdapat ranjau!");
 			int h=4;
 			while(h--){
 				scanf("%d", &lubang);
-				if(boardB[lubang]==1) skorB++;
-				else if(boardB[lubang]==0) skorA++;		
+				if(boardA[lubang]==1) skorB++;
+				else if(boardA[lubang]==0) skorA++;		
 			}
-			turn=2;
+			turn=1;
 			bagian=0;
+			
+			printf("Skor Pemain: \n");
+			printf("%s : %d\n", nama1, skorA);
+			printf("%s : %d\n", nama2, skorB);
 		}
-		printf("Skor Pemain: \n");
-		printf("%s : %d\n", nama1, skorA);
-		printf("%s : %d\n", nama2, skoraA);
 
 		if(skorA == 10 || skorB == 10 || sisaA == 0 || sisaB == 0){
 			printf("Permainan telah berakhir!\n");
@@ -65,20 +66,21 @@ void *playerB(void *arg){
 			turn=1;		
 		}
 		if(bagian==1){
-			printf("%s, ingin tebak ranjau milik %s\n", nama2, nama1);
-			printf("Masukan 4 lubang mana yang terdapat ranjau!");
+			printf("%s, ingin tebak ranjau milik %s\n", nama1, nama2);
+			printf("Masukan 4 lubang mana yang terdapat ranjau! ");
 			int h=4;
 			while(h--){
 				scanf("%d", &lubang);
-				if(boardA[lubang]==1) skorA++;
-				else if(boardA[lubang]==0) skorB++;		
+				if(boardB[lubang]==1) skorA++;
+				else if(boardB[lubang]==0) skorB++;		
 			}
-			turn=1;
+			turn=2;
 			bagian=0;
+			
+			printf("Skor Pemain: \n");
+			printf("%s : %d\n", nama1, skorA);
+			printf("%s : %d\n", nama2, skorB);
 		}
-		printf("Skor Pemain: \n");
-		printf("%s : %d\n", nama1, skorA);
-		printf("%s : %d\n", nama2, skoraA);
 
 		if(skorA == 10 || skorB == 10 || sisaA == 0 || sisaB == 0){
 			printf("Permainan telah berakhir!\n");
