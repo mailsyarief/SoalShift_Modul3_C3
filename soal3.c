@@ -6,17 +6,19 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-int Lohan=99;
-int Kepiting=99;
+int hewan[2];
 
 void *inikepiting(void *arg){
 	while(1){
 		sleep(20);
-		Kepiting-=10;
-		if(Kepiting <= 0 || Kepiting > 100){
-			printf("Game berkahir\n");
+		hewan[1]=hewan[1]-10;
+		if(hewan[1] <= 0 || hewan[1] > 100 || hewan[0] <= 0 || hewan[0] > 100){
+			//printf("Game berkahir\n");
 			exit(EXIT_FAILURE);		
 		}
+		/*else{
+		printf("Lohan: %d\tKepiting: %d\n", hewan[0], hewan[1]);
+		}*/
 	}
 }
 
