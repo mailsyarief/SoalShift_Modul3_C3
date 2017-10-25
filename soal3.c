@@ -25,10 +25,14 @@ void *inikepiting(void *arg){
 void *inilohan(void *arg){
 	while(1){
 		sleep(10);
-		if(Lohan <= 10 || Lohan > 100){
-			printf("Game berakhir\n");
+		hewan[0]=hewan[0]-15;
+		if(hewan[1] <= 0 || hewan[1] > 100 || hewan[0] <= 0 || hewan[0] > 100){
+			//printf("Game berakhir\n");
 			exit(EXIT_FAILURE);
 		}
+		/*else{
+		printf("Lohan: %d\tKepiting: %d\n", hewan[0], hewan[1]);
+		}*/
 	}
 }
 
