@@ -6,31 +6,38 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-void* factorial(void* oper)
+void *Search(void *arg)
 {
-    int count = (int*) oper;
-    int total = 1;
-    int i;
-    for(i=1;i<count;i++)
-    {
-        total *= i+1;
-    }
-    printf("Hasil %d = %d\n", count, total);
+	FILE *f;
+	f=fopen("Novel.txt", "r");
+	char kata[100];
+	strcpy(kata,arg);
+	int count;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+	while(getline(&line, &len, f)!= -1){
+		if(strstr(line, kata)!=NULL){
+		count++;
+		}
+	}
+	printf("%s: %d\n",kata, count);
 }
 
 
-int main(int argc, char** argv)
-{
-    pthread_t t[argc];
-    int i, convert;
 
-    for(i=1;i<argc;i++)
-    {
-        convert = atoi(argv[i]);
-        pthread_create(&(t[i]),NULL,&factorial,(void*)convert);
-    }
-  for(i=1;i<argc; i++)
-  {
-    pthread_join(t[i], NULL);
-  }
+int main(int argc, char** argv[])
+{
+
+	pthread_t t[argc];
+	int i;
+	for(i=0;i<argc;i++)
+	{
+		pthread_create(&(t[i]), NULL, &Search, (void*)argv[i]);
+	}
+	for(i=0;i<argc;i++){
+		pthread_join(t[i], NULL);	
+	}
+
+	return 0;
 }
